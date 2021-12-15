@@ -24,7 +24,7 @@ export const ProblemCardBody = styled.div`
 `;
 
 export const CardText = styled.div`
-  font-family: "Bebas Neue", cursive;
+  font-family: "Helvetica Neue ME";
   display: flex;
   flex-direction: column;
   align-items: center;

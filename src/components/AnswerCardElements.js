@@ -25,7 +25,7 @@ export const AnswerCardBody = styled.div`
 `;
 
 export const AnswerCardText = styled.div`
-  font-family: "Bebas Neue", cursive;
+  font-family: "Helvetica Neue ME";
   display: flex;
   flex-direction: column;
   align-items: center;
