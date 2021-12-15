@@ -1,49 +1,24 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Route, Switch } from 'react-router-dom';
+import Home from '../views/Home';
+import AnswerCardView from '../views/AnswerCardView';
+import ProblemCardView from '../views/ProblemCardView';
+import AnswerCard from '../components/AnswerCard';
+import ProblemCard from '../components/ProblemCard';
 
-const PrivateRoute = ({ component: Component, user, ...rest }) => {
-  const routeChecker = (taco) =>
-    user ? (
-      <Component {...taco} user={user} />
-    ) : (
-      <Redirect to={{ pathname: '/', state: { from: taco.location } }} />
-    );
-  return <Route {...rest} render={(props) => routeChecker(props)} />;
-};
-
-PrivateRoute.propTypes = {
-  component: PropTypes.func,
-  user: PropTypes.any,
-};
-
-function Routes({ user }) {
+function Routes() {
   return (
     <div>
       <Switch>
-        <Route exact path="/" user={user} component={Home} />
-        <PrivateRoute
-          exact
-          path="/"
-          user={user}
-          component={() => (
-            <ViewName user={user} />
-          )}
-        />
-        <PrivateRoute
-          exact
-          path="/"
-          user={user}
-          component={() => <ViewNAme user={user} />}
-        />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/AnswerCardView" component={AnswerCardView} />
+        <Route exact path="/ProblemCardView" component={ProblemCardView} />
+        <Route exact path="/AnswerCard" component={AnswerCard} />
+        <Route exact path="/ProblemCard" component={ProblemCard} />
         <Route path="*" component={Home} />
       </Switch>
     </div>
   );
 }
-
-Routes.propTypes = {
-  user: PropTypes.any,
-};
 
 export default Routes;
